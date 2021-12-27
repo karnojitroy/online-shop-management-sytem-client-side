@@ -6,6 +6,7 @@ import Rating from "react-rating";
 // this is for display products in home paget
 const ProductHome = (props) => {
 	const { products } = props;
+	console.log(products);
 
 	return (
 		<>

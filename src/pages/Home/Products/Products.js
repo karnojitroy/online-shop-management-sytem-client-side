@@ -1,12 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-	Col,
-	Collapse,
-	Container,
-	ListGroup,
-	Row,
-	Spinner
-} from "react-bootstrap";
+import { Col, Collapse, ListGroup, Row, Spinner } from "react-bootstrap";
 
 import {
 	BrowserRouter as Router,
@@ -54,10 +47,10 @@ export default function Products() {
 			{products.length === 0 && (
 				<Spinner className="mt-5" animation="border" variant="success" />
 			)}
-			<Router>
-				<div className="products-main-container">
+			<div className="products-main-container">
+				<Router>
 					<Row>
-						<Col xs={12} md={1}>
+						<Col xs={12} md={2}>
 							<ListGroup defaultActiveKey="#all">
 								<NavLink to={`${url}`} style={linkStyle}>
 									<ListGroup.Item
@@ -160,7 +153,7 @@ export default function Products() {
 								</Collapse>
 							</ListGroup>
 						</Col>
-						<Col xs={12} md={11}>
+						<Col xs={12} md={10}>
 							<Switch>
 								<Route exact path={path}>
 									<ProductHome products={products} />
@@ -171,8 +164,8 @@ export default function Products() {
 							</Switch>
 						</Col>
 					</Row>
-				</div>
-			</Router>
+				</Router>
+			</div>
 			<NavLink to="/explore-products" className={"text-decoration-none"}>
 				<button className="btn btn-grad my-5 mx-auto">
 					<i className="fas fa-chevron-right"></i>
