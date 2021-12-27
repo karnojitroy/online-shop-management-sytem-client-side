@@ -1,7 +1,7 @@
-/* .products-main-container {
+.products-main-container {
 	display: grid;
-	grid-template-columns: 1fr 6fr;
-} */
+	grid-template-columns: 1fr;
+}
 .product-container {
 	margin-left: 5%;
 	margin-right: 5%;

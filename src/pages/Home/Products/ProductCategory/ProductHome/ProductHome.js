@@ -15,7 +15,7 @@ const ProductHome = (props) => {
 				) : ( */}
 				<div className="row">
 					{products.slice(0, 6).map((product, index) => (
-						<div className=" col-sm-1 col-md-4 g-4" key={index}>
+						<div className="col-sm-12 col-md-4 g-4" key={index}>
 							<Card className="card" style={{ height: "500px" }}>
 								<Card.Img
 									variant="top"

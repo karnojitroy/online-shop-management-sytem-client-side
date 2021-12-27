@@ -20,7 +20,7 @@ const Contact = () => {
 					style={{ width: "25%", alignItems: "center", color: "black" }}
 				/>
 				<div className="row my-5 ">
-					<div className=" col-sm-1 col-lg-5 g-4 text-start">
+					<div className=" col-sm-12 col-lg-5 g-4 text-start">
 						<h5 className="text-danger text-center">HOT LINE</h5>
 						<hr />
 						<h6 className="mt-5">
@@ -74,7 +74,7 @@ const Contact = () => {
 							</a>
 						</div>
 					</div>
-					<div className=" col-sm-1 col-lg-7 g-4 px-4">
+					<div className=" col-sm-12 col-lg-7 g-4 px-4">
 						<Form onSubmit={handleSubmit(onSubmit)}>
 							<Form.Group
 								className="mb-3"
