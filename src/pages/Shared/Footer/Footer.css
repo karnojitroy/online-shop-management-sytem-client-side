@@ -1,0 +1,39 @@
+.footer{
+    background-color: #11141b;
+    color: white;
+    margin-top: 200px;
+    padding: 80px 0px 20px 0px;
+}
+.footer-link{
+color: white;
+}
+.footer-contact{
+    text-align: start;
+}
+.footer-contact ul{
+    text-align: start;
+    padding-left: 0px;
+}
+.footer-contact ul li{
+list-style: none;
+line-height: 14px;
+
+}
+.footer-contact ul li a{
+    text-decoration: none;
+    color: white;
+}
+
+.social-media a{
+padding: 10px 15px;
+margin: 4px;
+background-color: slategrey;
+border-radius: 1px;
+align-items: flex-end;
+}
+.social-media a:hover{
+    background-color: rgb(236, 203, 160);
+}
+.social-media a i{
+    color: white;
+}

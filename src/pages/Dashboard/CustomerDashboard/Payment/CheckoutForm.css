@@ -1,0 +1,9 @@
+.btn-pay {
+	background-color: #ffc107;
+	color: black;
+	border: none;
+}
+.btn-pay:hover {
+	background: linear-gradient(#ffc107, #e5df91);
+	color: black;
+}

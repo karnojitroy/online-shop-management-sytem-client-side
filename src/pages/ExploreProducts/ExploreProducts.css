@@ -1,0 +1,7 @@
+.btn-details {
+	background-color: #f36823;
+	border: none;
+}
+.btn-details:hover {
+	background: linear-gradient(#f36823, #e5df91);
+}

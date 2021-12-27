@@ -1,0 +1,66 @@
+/* .products-main-container {
+	display: grid;
+	grid-template-columns: 1fr 6fr;
+} */
+.product-container {
+	margin-left: 5%;
+	margin-right: 5%;
+}
+.category-container {
+	margin-right: 5px;
+	text-align: center;
+}
+.categories:hover {
+	background-color: rgb(217, 237, 238);
+	cursor: pointer;
+}
+
+.card {
+	color: black;
+	cursor: pointer;
+	box-shadow: rgb(0 0 0 / 50%) 0px 1px 4px;
+}
+.card:hover {
+	box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+	background-color: #ffffff;
+}
+
+.full-star {
+	color: #ffc107;
+}
+.empty-star {
+	color: #adb5bd;
+}
+.btn-details {
+	background-color: #f36823;
+	border: none;
+}
+.btn-details:hover {
+	background: linear-gradient(#f36823, #e5df91);
+}
+
+.btn-grad {
+	background-image: linear-gradient(
+		to right,
+		#16a085 0%,
+		#f4d03f 51%,
+		#16a085 100%
+	);
+}
+.btn-grad {
+	margin: 10px;
+	padding: 12px 45px;
+	text-align: center;
+	text-transform: uppercase;
+	transition: 0.5s;
+	background-size: 200% auto;
+	color: white;
+	box-shadow: 0 0 20px #eee;
+	border-radius: 5px;
+	display: block;
+}
+
+.btn-grad:hover {
+	background-position: right center; /* change the direction of the change here */
+	color: #fff;
+}

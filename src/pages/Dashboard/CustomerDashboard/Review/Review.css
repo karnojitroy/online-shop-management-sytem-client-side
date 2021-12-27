@@ -1,0 +1,16 @@
+input[type="radio"]{
+    display: none;
+}
+
+.star{
+    cursor: pointer;
+    transition:color 200ms;
+    margin-bottom: 20px;
+margin-right: 10px;
+}
+.full-star{
+    color: #ffc107;
+}
+.empty-star{
+    color: #adb5bd;
+}

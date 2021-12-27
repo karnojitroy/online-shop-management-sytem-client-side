@@ -1,0 +1,28 @@
+#contact {
+	background-color: rgb(255, 249, 241);
+}
+.contact-social-medail {
+	margin-top: 50px;
+}
+.contact-social-medail a {
+	color: rgb(60, 64, 82);
+	padding: 10px;
+	margin: 10px;
+}
+.contact-social-medail .fa-linkedin,
+.contact-social-medail .fa-facebook-square {
+	font-size: 30px;
+	color: #0073b2;
+}
+.contact-social-medail .fa-instagram-square {
+	font-size: 30px;
+	color: #e36494;
+}
+.contact-social-medail .fa-twitter-square {
+	font-size: 30px;
+	color: #1c9cea;
+}
+.contact-social-medail .fa-youtube-square {
+	font-size: 30px;
+	color: #f60002;
+}
