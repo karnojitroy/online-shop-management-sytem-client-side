@@ -14,7 +14,7 @@ const Slider = () => {
 						className="d-block w-100"
 						src={slide1}
 						alt="First slide"
-						height="560px"
+						height="600px"
 					/>
 					<Carousel.Caption className="text-warning"></Carousel.Caption>
 				</Carousel.Item>

@@ -54,7 +54,7 @@ const ProductsDetails = () => {
 
 			{product.price ? (
 				<div className="product">
-					<div className="row row-cols-1 row-cols-sm-2 row-cols-md-5">
+					<div className="row row-cols-12 row-cols-sm-2 row-cols-md-5">
 						<div className="col-md-3">
 							<div>
 								<img

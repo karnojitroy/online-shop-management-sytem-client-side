@@ -1,3 +1,7 @@
+.products-main-container {
+	display: grid;
+	grid-template-columns: 12fr 1fr;
+}
 .btn-details {
 	background-color: #f36823;
 	border: none;
