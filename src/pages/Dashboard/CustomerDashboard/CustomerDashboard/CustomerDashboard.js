@@ -35,22 +35,26 @@ function CustomerDashboard(props) {
 	};
 
 	const drawer = (
-		<div>
+		<div className="alignment-dashboard-menu">
 			{/* Customer dashboard menu */}
 			<Toolbar />
 			<Divider />
 			<NavLink to="/" style={style}>
+				<i className="fas fa-home text-black ms-3"></i>{" "}
 				<Button color="primary">Home</Button>
 			</NavLink>
 			<Divider />
 			<NavLink to={`${url}`} style={style}>
+				<i className="fas fa-shopping-cart text-black ms-3"></i>{" "}
 				<Button color="primary">My Orders</Button>
 			</NavLink>
 			<Divider />
 			<NavLink to={`${url}/review`} style={style}>
+				<i className="fas fa-comment-medical text-black ms-3"></i>{" "}
 				<Button color="primary">Service Review</Button>
 			</NavLink>
 			<Divider />
+			<i className="fas fa-sign-out-alt text-black ms-3"></i>{" "}
 			<Button onClick={logOut} color="primary">
 				Log Out
 			</Button>

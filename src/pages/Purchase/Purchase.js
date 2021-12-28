@@ -29,7 +29,6 @@ const Purchase = () => {
 	const [product, setProduct] = useState([]);
 	const [phoneQuentity, setPhoneQuenity] = useState(1);
 	const { user, isLoading } = useAuth();
-	console.log(product);
 	useEnhancedEffect(() => {
 		if (isLoading) {
 			return <Spinner className="my-5" animation="border" variant="success" />;

@@ -18,6 +18,7 @@ import ManageAllOrders from "../ManageAllOrders/ManageAllOrders";
 import AddAProduct from "../AddAProducts/AddAProduct";
 import MakeAnAdmin from "../MakeAnAdmin/MakeAnAdmin";
 import ManageProducts from "../ManageProducts/ManageProducts/ManageProducts";
+import Admins from "../Admins/Admins";
 
 const style = {
 	color: "white",
@@ -58,30 +59,41 @@ function AdminDashboard(props) {
 	const id = open ? "simple-popover" : undefined;
 
 	const drawer = (
-		<div>
+		<div className="alignment-dashboard-menu">
 			{/* dashboard menu */}
 			<Toolbar />
 			<Divider />
 			<NavLink to="/" style={style}>
+				<i className="fas fa-home text-black ms-3"></i>{" "}
 				<Button color="primary">Home</Button>
 			</NavLink>
 			<Divider />
 			<NavLink to={`${url}`} style={style}>
+				<i className="fas fa-tasks text-black ms-3"></i>{" "}
 				<Button color="primary">Manage All Orders</Button>
 			</NavLink>
 			<Divider />
 			<NavLink to={`${url}/manageProducts`} style={style}>
+				<i className="fas fa-tasks text-black ms-3"></i>{" "}
 				<Button color="primary">Manage Products</Button>
 			</NavLink>
 			<Divider />
 			<NavLink to={`${url}/addProduct`} style={style}>
+				<i className="fas fa-plus-square text-black ms-3"></i>{" "}
 				<Button color="primary">Add A Product</Button>
 			</NavLink>
 			<Divider />
 			<NavLink to={`${url}/makeAdmin`} style={style}>
+				<i className="fas fa-user-plus text-black ms-3"></i>{" "}
 				<Button color="primary">Make Admin</Button>
 			</NavLink>
 			<Divider />
+			<NavLink to={`${url}/admins`} style={style}>
+				<i className="fas fa-users text-black ms-3"></i>{" "}
+				<Button color="primary">Admins</Button>
+			</NavLink>
+			<Divider />
+			<i className="fas fa-sign-out-alt text-black ms-3"></i>{" "}
 			<Button onClick={logOut} color="primary">
 				Log Out
 			</Button>
@@ -193,6 +205,9 @@ function AdminDashboard(props) {
 					</Route>
 					<Route path={`${path}/makeAdmin`}>
 						<MakeAnAdmin />
+					</Route>
+					<Route path={`${path}/admins`}>
+						<Admins />
 					</Route>
 				</Switch>
 			</Box>

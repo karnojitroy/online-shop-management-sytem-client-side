@@ -29,7 +29,7 @@ const Navigation = () => {
 						<b>Mobile Mart</b>
 					</Navbar.Brand>
 					<NavLink className="serach" to="/explore-products#searchArea">
-						<i class="fas fa-search"></i>
+						<i className="fas fa-search"></i>
 					</NavLink>
 					<Navbar.Toggle />
 					<Navbar.Collapse className="justify-content-end">

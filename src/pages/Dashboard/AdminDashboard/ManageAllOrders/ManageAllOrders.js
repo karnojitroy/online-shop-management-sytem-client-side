@@ -126,7 +126,7 @@ export default function ManageAllOrders() {
 
 	// handle delete product
 	const handleDelete = (id) => {
-		if (confirm("Are you sure you want to book now??")) {
+		if (confirm("Are you sure you want to delete now??")) {
 			const url = `http://localhost:5000/orderRequest/${id}`;
 			fetch(url, {
 				method: "DELETE"

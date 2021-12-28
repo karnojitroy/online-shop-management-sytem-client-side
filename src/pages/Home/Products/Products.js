@@ -42,8 +42,8 @@ export default function Products() {
 				<Spinner className="mt-5" animation="border" variant="success" />
 			) : (
 				<div className="container">
-					<div class="row">
-						<div class="col-12 col-md-2 mt-4">
+					<div className="row">
+						<div className="col-12 col-md-2 mt-4">
 							<ListGroup>
 								<ListGroup.Item
 									onClick={() => setDisplayProducts(products)}
@@ -133,7 +133,7 @@ export default function Products() {
 								</div>
 							</Collapse>
 						</div>
-						<div class="col-12 col-md-10">
+						<div className="col-12 col-md-10">
 							<div className="row">
 								{displayProducts.slice(0, 6).map((product, index) => (
 									<div className="col-sm-12 col-md-4 g-4" key={index}>
