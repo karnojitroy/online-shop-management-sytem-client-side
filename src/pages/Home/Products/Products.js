@@ -19,7 +19,7 @@ export default function Products() {
 				setDisplayProducts(data);
 			});
 	}, []);
-
+	// handle filter product for selecting/ finding the specific products
 	const handleFilterProduct = (item) => {
 		const categoryLowerCase = item.toLowerCase();
 		const matchCategoryProduct = products.filter((product) => {
@@ -37,6 +37,7 @@ export default function Products() {
 					style={{ width: "25%", alignItems: "center", color: "black" }}
 				/>
 			</div>
+
 			{products.length === 0 ? (
 				<Spinner className="mt-5" animation="border" variant="success" />
 			) : (

@@ -9,3 +9,14 @@
 .btn-details:hover {
 	background: linear-gradient(#f36823, #e5df91);
 }
+#searchArea {
+	background-color: black;
+	height: 80px;
+}
+.searchInput {
+	justify-content: center;
+	text-align: left;
+	width: 340px;
+	margin-top: 20px;
+	height: 40px;
+}

@@ -12,6 +12,7 @@ const ExploreProducts = () => {
 	const [products, setProducts] = useState([]);
 	const [displayProducts, setDisplayProducts] = useState([]);
 	const [open, setOpen] = useState(false);
+	const [searchTexts, setSeachTexts] = useState("");
 
 	useEffect(() => {
 		fetch("http://localhost:5000/products")
@@ -22,6 +23,7 @@ const ExploreProducts = () => {
 			});
 	}, []);
 
+	// handle filter product for selecting/ finding the specific products
 	const handleFilterProduct = (item) => {
 		const categoryLowerCase = item.toLowerCase();
 		const matchCategoryProduct = products.filter((product) => {
@@ -29,10 +31,35 @@ const ExploreProducts = () => {
 		});
 		setDisplayProducts(matchCategoryProduct);
 	};
+	// handle search products
+	const handleSearchProduct = (e) => {
+		const searchText = e.target.value;
+		setSeachTexts(searchText);
+
+		const result = products.filter((product) => {
+			if (searchTexts === "") {
+				return `${searchTexts} not found`;
+			} else if (
+				product.name.toLowerCase().includes(searchTexts.toLowerCase())
+			) {
+				return product;
+			}
+			return product.name.toLowerCase() === "iphone";
+		});
+		setDisplayProducts(result);
+	};
 
 	return (
 		<div>
 			<Navigation></Navigation>
+			<div id="searchArea">
+				<input
+					className="searchInput"
+					value={searchTexts}
+					onChange={handleSearchProduct}
+					placeholder="search by name "
+				/>
+			</div>
 			<div className="container mt-5 pt-5" id="products">
 				<h2>Our Products</h2>
 				<hr
@@ -40,6 +67,7 @@ const ExploreProducts = () => {
 					style={{ width: "25%", alignItems: "center", color: "black" }}
 				/>
 			</div>
+			{displayProducts.length === 0 && <h6>Product not found</h6>}
 			{products.length === 0 ? (
 				<Spinner className="mt-5" animation="border" variant="success" />
 			) : (
