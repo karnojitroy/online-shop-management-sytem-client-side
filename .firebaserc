@@ -1,5 +1,7 @@
 {
   "projects": {
-    "default": "baby-lotion-61f72"
-  }
+    "default": "baby-lotion-61f72",
+    "staging": "online-shop-management-bf2f8"
+  },
+  "targets": {}
 }

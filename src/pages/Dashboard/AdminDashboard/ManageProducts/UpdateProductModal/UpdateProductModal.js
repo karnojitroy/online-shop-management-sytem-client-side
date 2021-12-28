@@ -26,7 +26,7 @@ const UpdateProductModal = ({
 }) => {
 	const [productInfo, setProductInfo] = useState({});
 	useEffect(() => {
-		const url = `http://localhost:5000/products/${productId}`;
+		const url = `https://floating-ocean-21128.herokuapp.com/products/${productId}`;
 		fetch(url)
 			.then((res) => res.json())
 			.then((data) => setProductInfo(data));
@@ -43,7 +43,7 @@ const UpdateProductModal = ({
 
 	const handleUpdateProductSubmit = (e) => {
 		// send to servers
-		const url = `http://localhost:5000/products/${productId}`;
+		const url = `https://floating-ocean-21128.herokuapp.com/products/${productId}`;
 		fetch(url, {
 			method: "PUT",
 			headers: {

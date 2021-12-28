@@ -67,7 +67,7 @@ const Review = () => {
 		if (review.ratings === 0) {
 			alert("Please give ratings");
 		} else {
-			fetch("http://localhost:5000/reviews", {
+			fetch("https://floating-ocean-21128.herokuapp.com/reviews", {
 				method: "POST",
 				headers: {
 					"content-type": "application/json"
@@ -85,7 +85,7 @@ const Review = () => {
 	};
 
 	useEffect(() => {
-		fetch(`http://localhost:5000/reviews`)
+		fetch(`https://floating-ocean-21128.herokuapp.com/reviews`)
 			.then((res) => res.json())
 			.then((data) => {
 				setReviews(data);

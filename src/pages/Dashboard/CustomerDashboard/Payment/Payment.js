@@ -29,7 +29,9 @@ const Payment = () => {
 	const [myOrder, setMyOrder] = React.useState([]);
 
 	React.useEffect(() => {
-		fetch(`http://localhost:5000/orderRequest/orderId/${orderId}`)
+		fetch(
+			`https://floating-ocean-21128.herokuapp.com/orderRequest/orderId/${orderId}`
+		)
 			.then((res) => res.json())
 			.then((data) => setMyOrder(data));
 	}, [orderId]);

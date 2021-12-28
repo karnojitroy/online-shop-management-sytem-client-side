@@ -33,7 +33,7 @@ const Purchase = () => {
 		if (isLoading) {
 			return <Spinner className="my-5" animation="border" variant="success" />;
 		}
-		fetch(`http://localhost:5000/products/${productId}`)
+		fetch(`https://floating-ocean-21128.herokuapp.com/products/${productId}`)
 			.then((res) => res.json())
 			.then((data) => setProduct(data));
 	}, [productId]);
@@ -91,7 +91,7 @@ const Purchase = () => {
 
 			// send to servers
 
-			fetch("http://localhost:5000/orderRequest", {
+			fetch("https://floating-ocean-21128.herokuapp.com/orderRequest", {
 				method: "POST",
 				headers: {
 					"content-type": "application/json"

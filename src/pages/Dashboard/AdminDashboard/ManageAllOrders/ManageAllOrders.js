@@ -38,7 +38,7 @@ export default function ManageAllOrders() {
 	const [status, setStatus] = useState("");
 
 	useEffect(() => {
-		fetch("http://localhost:5000/orderRequest")
+		fetch("https://floating-ocean-21128.herokuapp.com/orderRequest")
 			.then((res) => res.json())
 			.then((data) => setOrders(data));
 	}, []);
@@ -109,7 +109,7 @@ export default function ManageAllOrders() {
 	// update order status pending to Shipped
 	const handleUpdateStatus = (id) => {
 		// e.preventDefault();
-		fetch(`http://localhost:5000/status/${id}`, {
+		fetch(`https://floating-ocean-21128.herokuapp.com/status/${id}`, {
 			method: "PUT",
 			headers: {
 				"content-type": "application/json"
@@ -127,7 +127,7 @@ export default function ManageAllOrders() {
 	// handle delete product
 	const handleDelete = (id) => {
 		if (confirm("Are you sure you want to delete now??")) {
-			const url = `http://localhost:5000/orderRequest/${id}`;
+			const url = `https://floating-ocean-21128.herokuapp.com/orderRequest/${id}`;
 			fetch(url, {
 				method: "DELETE"
 			})

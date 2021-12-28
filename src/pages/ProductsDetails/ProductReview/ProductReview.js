@@ -37,7 +37,7 @@ export default function ProductReview(props) {
 	};
 
 	useEffect(() => {
-		fetch(`http://localhost:5000/products/${productId}`)
+		fetch(`https://floating-ocean-21128.herokuapp.com/products/${productId}`)
 			.then((res) => res.json())
 			.then((data) => {
 				setProduct(data);
@@ -45,7 +45,7 @@ export default function ProductReview(props) {
 	}, [productId]);
 
 	useEffect(() => {
-		fetch(`http://localhost:5000/productReviews`)
+		fetch(`https://floating-ocean-21128.herokuapp.com/productReviews`)
 			.then((res) => res.json())
 			.then((data) => {
 				setProductReviews(data);
@@ -102,7 +102,7 @@ export default function ProductReview(props) {
 					swal("Sorry!", "You can't give onec more", "error");
 					return;
 				} else {
-					fetch("http://localhost:5000/productReviews", {
+					fetch("https://floating-ocean-21128.herokuapp.com/productReviews", {
 						method: "POST",
 						headers: {
 							"content-type": "application/json"
@@ -120,7 +120,7 @@ export default function ProductReview(props) {
 								swal("Review", "Submitted", "success");
 							}
 						});
-					// fetch(`http://localhost:5000/products/${productId}`, {
+					// fetch(`https://floating-ocean-21128.herokuapp.com/products/${productId}`, {
 					// 	method: "PUT",
 					// 	headers: {
 					// 		"content-type": "application/json"
