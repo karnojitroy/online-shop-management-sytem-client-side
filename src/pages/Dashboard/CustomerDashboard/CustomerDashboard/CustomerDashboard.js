@@ -10,7 +10,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { Button } from "@mui/material";
-
+import ReviewsIcon from "@mui/icons-material/Reviews";
 import { Switch, Route, useRouteMatch, NavLink } from "react-router-dom";
 import useAuth from "../../../../hooks/useAuth";
 import MyOrders from "../MyOrders/MyOrders";
@@ -50,7 +50,8 @@ function CustomerDashboard(props) {
 			</NavLink>
 			<Divider />
 			<NavLink to={`${url}/review`} style={style}>
-				<i className="fas fa-comment-medical text-black ms-3"></i>{" "}
+				<ReviewsIcon sx={{ color: "black", marginLeft: 2, fontSize: 18 }} />{" "}
+				{""}
 				<Button color="primary">Service Review</Button>
 			</NavLink>
 			<Divider />

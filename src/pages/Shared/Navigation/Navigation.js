@@ -6,7 +6,8 @@ import { NavHashLink } from "react-router-hash-link";
 import useAuth from "../../../hooks/useAuth";
 import "./Navigation.css";
 import logo from "../../../images/logo.png";
-import avatar from "../../../images/user.png";
+import { Avatar } from "@mui/material";
+
 const menuActiveStyle = {
 	fontWeight: "bold",
 	color: "black"
@@ -76,18 +77,16 @@ const Navigation = () => {
 							</Nav.Link>
 						)}
 						{user?.email ? (
-							<div>
+							<div className="d-flex align-items-center">
 								<Button
 									onClick={logOut}
-									className="btn btn-warning ms-4 text-white"
+									className="btn btn-warning ms-4 px-4 text-white"
 								>
-									Logout
+									<i class="fas fa-sign-out-alt"></i>
 								</Button>
-								<>
+								<div className="d-flex align-items-center">
 									{user.photoURL === null ? (
-										<img
-											src={avatar}
-											alt=""
+										<Avatar
 											style={{
 												height: "30px",
 												width: "30px",
@@ -95,11 +94,10 @@ const Navigation = () => {
 												marginRight: "2px",
 												borderRadius: "50px"
 											}}
+											src="/broken-image.jpg"
 										/>
 									) : (
-										<img
-											src={user.photoURL}
-											alt=""
+										<Avatar
 											style={{
 												height: "30px",
 												width: "30px",
@@ -107,11 +105,13 @@ const Navigation = () => {
 												marginRight: "2px",
 												borderRadius: "50px"
 											}}
+											alt="Remy Sharp"
+											src={user?.photoURL}
 										/>
 									)}
 
 									{user.displayName}
-								</>
+								</div>
 							</div>
 						) : (
 							<Nav.Link as={NavLink} to="/login" activeStyle={menuActiveStyle}>

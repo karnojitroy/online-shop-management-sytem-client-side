@@ -8,9 +8,11 @@ const Footer = () => {
 				<div className="row row-cols-1 row-cols-sm-2 row-cols-md-5">
 					<div className="col-md-4  text-start">
 						<h5 className="mb-4">About Us</h5>
-						<p>
+						<p className="textAlign">
 							We are providing best products and best service. Our products are
-							only various top brand smartphones
+							only various top brand smartphones. We are providing best products
+							and best service. Our products are only various top brand
+							smartphones
 						</p>
 					</div>
 					<div className="col-md-2"></div>
