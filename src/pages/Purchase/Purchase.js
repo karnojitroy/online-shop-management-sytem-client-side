@@ -160,122 +160,124 @@ const Purchase = () => {
 							</Card>
 						</Col>
 						<Col xs={12} md={5}>
-							<h4>Purchase Now</h4>
-							{/* Order form */}
-							<form onSubmit={handleOrderSubmit} className="ms-5">
-								<p>Product: </p>
-								<input
-									disabled
-									className="input-style"
-									id="outlined-size-p"
-									name="productName"
-									defaultValue={product?.name}
-									onBlur={handleOnBlur}
-								/>{" "}
-								<br />
-								<p>Price in doller: </p>
-								<input
-									disabled
-									className="input-style"
-									id="outlined-size-p"
-									name="productQuentity"
-									value={phoneQuentity}
-									onBlur={handleOnBlur}
-								/>{" "}
-								<br />
-								<p>Price in doller: </p>
-								<input
-									disabled
-									className="input-style"
-									id="outlined-size-p"
-									name="price"
-									value={totalPrice}
-									onBlur={handleOnBlur}
-								/>{" "}
-								<br />
-								<p>Tax 7%: </p>
-								<input
-									disabled
-									className="input-style"
-									id="outlined-size-p"
-									name="price"
-									value={tax.toFixed(2)}
-									onBlur={handleOnBlur}
-								/>{" "}
-								<br />
-								<p>Shipping Cost item/ 5$: </p>
-								<input
-									disabled
-									className="input-style"
-									id="outlined-size-p"
-									name="price"
-									value={totalShippingCost.toFixed(2)}
-									onBlur={handleOnBlur}
-								/>{" "}
-								<br />
-								<p>Total Cost: </p>
-								<input
-									disabled
-									className="input-style"
-									id="outlined-size-p"
-									name="price"
-									value={totalOrderCost.toFixed(2)}
-									onBlur={handleOnBlur}
-								/>{" "}
-								<br />
-								<p>Customer name: </p>
-								<input
-									required
-									disabled
-									className="input-style"
-									id="outlined-size-p"
-									name="customerName"
-									defaultValue={user.displayName}
-									onBlur={handleOnBlur}
-								/>{" "}
-								<br />
-								<p>Email: </p>
-								<input
-									required
-									disabled
-									className="input-style"
-									id="outlined-size-p"
-									name="email"
-									defaultValue={user.email}
-									onBlur={handleOnBlur}
-								/>
-								<br />
-								<input
-									required
-									style={inputStyle}
-									id="outlined-size-p"
-									name="phone"
-									type="number"
-									placeholder="Your Phone Number*"
-									onChange={handleOnBlur}
-								/>
-								<br />
-								<textarea
-									required
-									style={inputStyle}
-									id="outlined-size-p"
-									name="address"
-									placeholder="Shipping Address*"
-									onChange={handleOnBlur}
-									rows="7"
-								/>
-								<br />
-								<Button
-									variant="contained"
-									type="submit"
-									className="btn btn-purchase"
-									style={inputStyle}
-									sx={{ alignItems: "right" }}
-								>
-									{<FontAwesomeIcon icon={faShoppingCart} />}
-									Confirm Purchase
-								</Button>
-							</form>
+							<div className="cart-bg">
+								<h4>Purchase Now</h4>
+								{/* Order form */}
+								<form onSubmit={handleOrderSubmit}>
+									<p>Product: </p>
+									<input
+										disabled
+										className="input-style"
+										id="outlined-size-p"
+										name="productName"
+										defaultValue={product?.name}
+										onBlur={handleOnBlur}
+									/>{" "}
+									<br />
+									<p>Quentity: </p>
+									<input
+										disabled
+										className="input-style"
+										id="outlined-size-p"
+										name="productQuentity"
+										value={phoneQuentity}
+										onBlur={handleOnBlur}
+									/>{" "}
+									<br />
+									<p>Price in doller: </p>
+									<input
+										disabled
+										className="input-style-color-cyan"
+										id="outlined-size-p"
+										name="price"
+										value={totalPrice.toFixed(2)}
+										onBlur={handleOnBlur}
+									/>{" "}
+									<br />
+									<p>Tax 7%: </p>
+									<input
+										disabled
+										className="input-style-color-cyan"
+										id="outlined-size-p"
+										name="price"
+										value={tax.toFixed(2)}
+										onBlur={handleOnBlur}
+									/>{" "}
+									<br />
+									<p>Shipping Cost item/ 5$: </p>
+									<input
+										disabled
+										className="input-style-color-cyan"
+										id="outlined-size-p"
+										name="price"
+										value={totalShippingCost.toFixed(2)}
+										onBlur={handleOnBlur}
+									/>{" "}
+									<br />
+									<p>Total Cost: </p>
+									<input
+										disabled
+										className="input-style-color-cyan"
+										id="outlined-size-p"
+										name="price"
+										value={totalOrderCost.toFixed(2)}
+										onBlur={handleOnBlur}
+									/>{" "}
+									<br />
+									<p>Customer name: </p>
+									<input
+										required
+										disabled
+										className="input-style"
+										id="outlined-size-p"
+										name="customerName"
+										defaultValue={user.displayName}
+										onBlur={handleOnBlur}
+									/>{" "}
+									<br />
+									<p>Email: </p>
+									<input
+										required
+										disabled
+										className="input-style"
+										id="outlined-size-p"
+										name="email"
+										defaultValue={user.email}
+										onBlur={handleOnBlur}
+									/>
+									<br />
+									<input
+										required
+										style={inputStyle}
+										id="outlined-size-p"
+										name="phone"
+										type="number"
+										placeholder="Your Phone Number*"
+										onChange={handleOnBlur}
+									/>
+									<br />
+									<textarea
+										required
+										style={inputStyle}
+										id="outlined-size-p"
+										name="address"
+										placeholder="Shipping Address*"
+										onChange={handleOnBlur}
+										rows="7"
+									/>
+									<br />
+									<Button
+										variant="contained"
+										type="submit"
+										className="btn btn-purchase"
+										style={inputStyle}
+										sx={{ alignItems: "right" }}
+									>
+										{<FontAwesomeIcon icon={faShoppingCart} />}
+										Confirm Purchase
+									</Button>
+								</form>
+							</div>
 						</Col>
 					</Row>
 				</Container>

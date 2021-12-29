@@ -13,11 +13,24 @@
 	height: 50p;
 	flex-wrap: nowrap;
 }
+.cart-bg {
+	padding: 10px;
+	border-radius: 3px;
+	box-shadow: -3px 7px 14px grey;
+}
 .input-style {
 	border: none;
 	width: 100%;
 	height: 30px;
+	padding-left: 10px;
 	background-color: rgb(241, 219, 219);
+}
+.input-style-color-cyan {
+	border: none;
+	width: 100%;
+	height: 30px;
+	padding-left: 10px;
+	background-color: rgb(171, 234, 250);
 }
 form p {
 	margin-top: 25px;
