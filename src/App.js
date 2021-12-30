@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./pages/Home/Home/Home";
 import AuthProvider from "./contexts/AuthProvider";
 import ExploreProducts from "./pages/ExploreProducts/ExploreProducts";
-import Purchase from "./pages/Purchase/Purchase";
 import Login from "./pages/Login/Login/Login";
 import Register from "./pages/Login/Register/Register";
 import PrivateRoute from "./pages/Login/PrivateRoute/PrivateRoute";
@@ -11,6 +10,7 @@ import Dashboard from "./pages/Dashboard/Dashboard/Dashboard";
 import NotFound from "./pages/NotFound/NotFound";
 import Review from "./pages/Dashboard/CustomerDashboard/Review/Review";
 import ProductsDetails from "./pages/ProductsDetails/ProductsDetails";
+import OrderProduct from "./pages/ProductsDetails/OrderProduct/OrderProduct";
 
 function App() {
 	return (
@@ -30,8 +30,8 @@ function App() {
 						<Route path="/product-details/:productId">
 							<ProductsDetails />
 						</Route>
-						<PrivateRoute path="/purchase/:productId">
-							<Purchase></Purchase>
+						<PrivateRoute path="/order-product/:productId">
+							<OrderProduct />
 						</PrivateRoute>
 						<PrivateRoute path="/dashboard">
 							<Dashboard />

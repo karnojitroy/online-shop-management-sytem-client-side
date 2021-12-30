@@ -82,7 +82,7 @@ const Navigation = () => {
 									onClick={logOut}
 									className="btn btn-warning ms-4 px-4 text-white"
 								>
-									<i class="fas fa-sign-out-alt"></i>
+									<i className="fas fa-sign-out-alt"></i>
 								</Button>
 								<div className="d-flex align-items-center">
 									{user.photoURL === null ? (

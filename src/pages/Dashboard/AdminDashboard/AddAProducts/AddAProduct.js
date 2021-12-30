@@ -40,7 +40,7 @@ const AddAProduct = () => {
 			formData.append("color", data.color);
 			formData.append("ratings", data.ratings);
 
-			fetch("https://floating-ocean-21128.herokuapp.com/products", {
+			fetch("http://localhost:5000/products", {
 				method: "POST",
 				body: formData
 			})

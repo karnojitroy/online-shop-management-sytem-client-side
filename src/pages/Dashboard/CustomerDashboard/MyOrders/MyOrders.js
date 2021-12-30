@@ -39,9 +39,7 @@ export default function MyOrders() {
 	const [orders, setOrders] = useState([]);
 
 	useEffect(() => {
-		fetch(
-			`https://floating-ocean-21128.herokuapp.com/orderRequest/${user.email}`
-		)
+		fetch(`http://localhost:5000/orderRequest/${user.email}`)
 			.then((res) => res.json())
 			.then((data) => setOrders(data));
 	}, [user.email]);
@@ -111,7 +109,7 @@ export default function MyOrders() {
 	// delete order
 	const handleDelete = (id) => {
 		if (confirm("Are you sure you want to book now??")) {
-			const url = `https://floating-ocean-21128.herokuapp.com/orderRequest/${id}`;
+			const url = `http://localhost:5000/orderRequest/${id}`;
 			fetch(url, {
 				method: "DELETE"
 			})

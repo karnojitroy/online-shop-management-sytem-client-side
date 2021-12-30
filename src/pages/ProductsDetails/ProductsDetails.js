@@ -17,7 +17,7 @@ const ProductsDetails = () => {
 	const [productReviews, setProductReviews] = useState([]);
 
 	useEffect(() => {
-		fetch(`https://floating-ocean-21128.herokuapp.com/products/${productId}`)
+		fetch(`http://localhost:5000/products/${productId}`)
 			.then((res) => res.json())
 			.then((data) => {
 				setProduct(data);
@@ -25,7 +25,7 @@ const ProductsDetails = () => {
 	}, [productId]);
 
 	useEffect(() => {
-		fetch(`https://floating-ocean-21128.herokuapp.com/productReviews`)
+		fetch(`http://localhost:5000/productReviews`)
 			.then((res) => res.json())
 			.then((data) => {
 				setProductReviews(data);
@@ -86,10 +86,12 @@ const ProductsDetails = () => {
 											<FontAwesomeIcon icon={faShoppingCart} /> Not for Admin
 										</Button>
 									) : (
-										<NavLink to={`/purchase/${product._id}`} className="mb-1">
+										<NavLink
+											to={`/order-product/${product._id}`}
+											className="mb-1"
+										>
 											<Button className="btn btn-purchase my-3 w-75">
-												{<FontAwesomeIcon icon={faShoppingCart} />} "Purchase
-												Now
+												{<FontAwesomeIcon icon={faShoppingCart} />} Go Order
 											</Button>
 										</NavLink>
 									)}

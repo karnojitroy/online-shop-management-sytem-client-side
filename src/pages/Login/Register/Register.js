@@ -6,7 +6,7 @@ import useAuth from "../../../hooks/useAuth";
 import Navigation from "../../Shared/Navigation/Navigation";
 
 const style = {
-	width: "300px"
+	width: "500px"
 };
 const alertStyle = {
 	justifyContent: "center",
@@ -34,7 +34,15 @@ const Register = () => {
 			return;
 		}
 
-		registerUser(registerData.email, registerData.password1, registerData.name);
+		registerUser(
+			registerData.email,
+			registerData.password1,
+			registerData.name,
+			registerData.phone,
+			registerData.address,
+			registerData.city,
+			registerData.country
+		);
 		e.preventDefault();
 	};
 
@@ -76,6 +84,42 @@ const Register = () => {
 							name="email"
 							onBlur={handleOnBlur}
 							placeholder="Email*"
+							style={style}
+						/>
+						<br /> <br />
+						<input
+							type="number"
+							required
+							name="phone"
+							onBlur={handleOnBlur}
+							placeholder="Phone*"
+							style={style}
+						/>
+						<br /> <br />
+						<textarea
+							type="text"
+							required
+							name="address"
+							onBlur={handleOnBlur}
+							placeholder="Address*"
+							style={style}
+						/>
+						<br /> <br />
+						<input
+							type="text"
+							required
+							name="city"
+							onBlur={handleOnBlur}
+							placeholder="City*"
+							style={style}
+						/>
+						<br /> <br />
+						<input
+							type="text"
+							required
+							name="country"
+							onBlur={handleOnBlur}
+							placeholder="Country*"
 							style={style}
 						/>
 						<br /> <br />

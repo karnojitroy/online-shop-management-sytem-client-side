@@ -16,6 +16,7 @@ import useAuth from "../../../../hooks/useAuth";
 import MyOrders from "../MyOrders/MyOrders";
 import Payment from "../Payment/Payment";
 import Review from "../Review/Review";
+import CustomerProfile from "../CustomerProfile/CustomerProfile";
 
 //  This is customer dashboard
 const style = {
@@ -42,6 +43,11 @@ function CustomerDashboard(props) {
 			<NavLink to="/" style={style}>
 				<i className="fas fa-home text-black ms-3"></i>{" "}
 				<Button color="primary">Home</Button>
+			</NavLink>
+			<Divider />
+			<NavLink to={`${url}/my-account`} style={style}>
+				<i className="fas fa-user text-black ms-3"></i> {"  "}
+				<Button color="primary">My Account</Button>
 			</NavLink>
 			<Divider />
 			<NavLink to={`${url}`} style={style}>
@@ -141,6 +147,9 @@ function CustomerDashboard(props) {
 				<Switch>
 					<Route exact path={path}>
 						<MyOrders />
+					</Route>
+					<Route path={`${path}/my-account`}>
+						<CustomerProfile />
 					</Route>
 					<Route path={`${path}/payment/:orderId`}>
 						<Payment />

@@ -20,16 +20,32 @@ const useFirebase = () => {
 	const auth = getAuth();
 	const googleProvider = new GoogleAuthProvider();
 
-	const registerUser = (email, password, name) => {
+	const registerUser = (
+		email,
+		password,
+		name,
+		phone,
+		address,
+		city,
+		country
+	) => {
 		setIsLoading(true);
 		createUserWithEmailAndPassword(auth, email, password)
 			.then((userCredential) => {
 				setAuthError("");
-				const newUser = { email, displayName: name, photoURL: "" };
+				const newUser = {
+					email,
+					displayName: name,
+					photoURL: "",
+					phoneNumber: phone,
+					address,
+					city,
+					country
+				};
 				setUser(newUser);
 
 				//save user to the database
-				saveUser(email, name, "", "POST");
+				saveUser(email, name, "", phone, address, city, country, "POST");
 				// send name to firebase after register with email and password
 				updateProfile(auth.currentUser, {
 					displayName: name
@@ -63,7 +79,16 @@ const useFirebase = () => {
 		signInWithPopup(auth, googleProvider)
 			.then((result) => {
 				const user = result.user;
-				saveUser(user.email, user.displayName, user.photoURL, "PUT");
+				saveUser(
+					user.email,
+					user.displayName,
+					user.photoURL,
+					user.phoneNumber,
+					user?.address,
+					user?.city,
+					user?.county,
+					"PUT"
+				);
 				const destination = location?.state?.from || "/";
 				history.replace(destination);
 				setAuthError("");
@@ -89,16 +114,33 @@ const useFirebase = () => {
 
 	//check and set admin
 	useEffect(() => {
-		fetch(`https://floating-ocean-21128.herokuapp.com/users/${user.email}`)
+		fetch(`http://localhost:5000/users/${user.email}`)
 			.then((res) => res.json())
 			.then((data) => setAdmin(data.admin));
 	}, [user.email]);
 
 	// save users into database
-	const saveUser = (email, displayName, photoURL, method) => {
-		const user = { email, displayName, photoURL };
+	const saveUser = (
+		email,
+		displayName,
+		photoURL,
+		phoneNumber,
+		address,
+		city,
+		country,
+		method
+	) => {
+		const user = {
+			email,
+			displayName,
+			photoURL,
+			phoneNumber,
+			address,
+			city,
+			country
+		};
 		if (method === "POST" || method === "PUT" || method === "DELETE") {
-			fetch("https://floating-ocean-21128.herokuapp.com/users", {
+			fetch("http://localhost:5000/users", {
 				method: method,
 				headers: {
 					"content-type": "application/json"
@@ -106,7 +148,7 @@ const useFirebase = () => {
 				body: JSON.stringify(user)
 			}).then();
 		} else {
-			fetch("https://floating-ocean-21128.herokuapp.com/users", {
+			fetch("http://localhost:5000/users", {
 				method: method,
 				headers: {
 					"content-type": "application/json"

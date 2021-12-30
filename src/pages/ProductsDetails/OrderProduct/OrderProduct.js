@@ -5,11 +5,11 @@ import Button from "@restart/ui/esm/Button";
 import React, { useState } from "react";
 import { Card, Col, Container, Navbar, Row, Spinner } from "react-bootstrap";
 import { NavLink, useParams } from "react-router-dom";
-import useAuth from "../../hooks/useAuth";
+import useAuth from "../../../hooks/useAuth";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
-import logo from "../../images/logo.png";
-import "./Purchase.css";
+import logo from "../../../images/logo.png";
+import "./OrderProduct.css";
 
 const brandNameStyle = {
 	fontWeight: "bold",
@@ -24,7 +24,7 @@ const inputStyle = {
 };
 
 // purchase component which will display product info and order option
-const Purchase = () => {
+const OrderProduct = () => {
 	const { productId } = useParams();
 	const [product, setProduct] = useState([]);
 	const [phoneQuentity, setPhoneQuenity] = useState(1);
@@ -33,7 +33,7 @@ const Purchase = () => {
 		if (isLoading) {
 			return <Spinner className="my-5" animation="border" variant="success" />;
 		}
-		fetch(`https://floating-ocean-21128.herokuapp.com/products/${productId}`)
+		fetch(`http://localhost:5000/products/${productId}`)
 			.then((res) => res.json())
 			.then((data) => setProduct(data));
 	}, [productId]);
@@ -91,7 +91,7 @@ const Purchase = () => {
 
 			// send to servers
 
-			fetch("https://floating-ocean-21128.herokuapp.com/orderRequest", {
+			fetch("http://localhost:5000/orderRequest", {
 				method: "POST",
 				headers: {
 					"content-type": "application/json"
@@ -103,7 +103,7 @@ const Purchase = () => {
 					if (data.insertedId)
 						swal(
 							"Order placed successfully",
-							"Go to the dashboard for payment",
+							"Go to the dashboard,Complete payment and confirm the order",
 							"success"
 						);
 				});
@@ -161,7 +161,7 @@ const Purchase = () => {
 						</Col>
 						<Col xs={12} md={5}>
 							<div className="cart-bg">
-								<h4>Purchase Now</h4>
+								<h4>Order Now</h4>
 								{/* Order form */}
 								<form onSubmit={handleOrderSubmit}>
 									<p>Product: </p>
@@ -273,8 +273,13 @@ const Purchase = () => {
 										style={inputStyle}
 										sx={{ alignItems: "right" }}
 									>
-										{<FontAwesomeIcon icon={faShoppingCart} />}
-										Confirm Purchase
+										{
+											<FontAwesomeIcon
+												style={{ marginRight: "5px" }}
+												icon={faShoppingCart}
+											/>
+										}
+										Place Order
 									</Button>
 								</form>
 							</div>
@@ -288,4 +293,4 @@ const Purchase = () => {
 	);
 };
 
-export default Purchase;
+export default OrderProduct;

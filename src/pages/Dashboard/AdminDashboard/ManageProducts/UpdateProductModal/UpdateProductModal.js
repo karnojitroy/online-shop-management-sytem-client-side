@@ -1,10 +1,11 @@
+import React, { useState, useEffect } from "react";
 import { Button, Typography } from "@mui/material";
 import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import TextField from "@mui/material/TextField";
-import React, { useState, useEffect } from "react";
+
 import swal from "sweetalert";
 
 const style = {
@@ -26,7 +27,7 @@ const UpdateProductModal = ({
 }) => {
 	const [productInfo, setProductInfo] = useState({});
 	useEffect(() => {
-		const url = `https://floating-ocean-21128.herokuapp.com/products/${productId}`;
+		const url = `http://localhost:5000/products/${productId}`;
 		fetch(url)
 			.then((res) => res.json())
 			.then((data) => setProductInfo(data));
@@ -43,7 +44,7 @@ const UpdateProductModal = ({
 
 	const handleUpdateProductSubmit = (e) => {
 		// send to servers
-		const url = `https://floating-ocean-21128.herokuapp.com/products/${productId}`;
+		const url = `http://localhost:5000/products/${productId}`;
 		fetch(url, {
 			method: "PUT",
 			headers: {

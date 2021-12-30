@@ -1,5 +1,5 @@
 /* eslint-disable no-restricted-globals */
-import React from "react";
+import React, { useState } from "react";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import { Grid } from "@mui/material";
@@ -9,7 +9,7 @@ import UpdateProductModal from "../UpdateProductModal/UpdateProductModal";
 // here the function of edit and delete product info
 const ManageProduct = ({ product, handleDeleteProduct }) => {
 	const { img, name } = product;
-	const [openEditProductModal, setOpenEditProductModal] = React.useState(false);
+	const [openEditProductModal, setOpenEditProductModal] = useState(false);
 	const handleOpenEditProductModal = () => setOpenEditProductModal(true);
 	const handleCloseEditProductModal = () => setOpenEditProductModal(false);
 

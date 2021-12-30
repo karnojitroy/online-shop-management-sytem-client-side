@@ -19,7 +19,7 @@ const CheckoutForm = (myOrder) => {
 	const [processing, setProcessing] = useState(false);
 
 	useEffect(() => {
-		fetch("https://floating-ocean-21128.herokuapp.com/create-payment-intent", {
+		fetch("http://localhost:5000/create-payment-intent", {
 			method: "POST",
 			headers: {
 				"content-type": "application/json"
@@ -89,7 +89,7 @@ const CheckoutForm = (myOrder) => {
 				last4: paymentMethod.card.last4,
 				transaction: paymentIntent.client_secret.slice("_secret")[0]
 			};
-			const url = `https://floating-ocean-21128.herokuapp.com/orderRequest/orderId/${_id}`;
+			const url = `http://localhost:5000/orderRequest/orderId/${_id}`;
 			fetch(url, {
 				method: "PUT",
 				headers: {
