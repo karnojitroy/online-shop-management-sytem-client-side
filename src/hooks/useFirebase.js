@@ -114,7 +114,7 @@ const useFirebase = () => {
 
 	//check and set admin
 	useEffect(() => {
-		fetch(`http://localhost:5000/users/${user.email}`)
+		fetch(`https://floating-ocean-21128.herokuapp.com/${user.email}`)
 			.then((res) => res.json())
 			.then((data) => setAdmin(data.admin));
 	}, [user.email]);

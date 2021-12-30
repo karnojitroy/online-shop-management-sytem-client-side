@@ -26,7 +26,7 @@ const UpdateCustomerProfileModal = ({
 }) => {
 	const [customerInfo, setCustomernfo] = useState({});
 	useEffect(() => {
-		const url = `http://localhost:5000/users/userEmail/${customerEmail}`;
+		const url = `https://floating-ocean-21128.herokuapp.com/users/userEmail/${customerEmail}`;
 		fetch(url)
 			.then((res) => res.json())
 			.then((data) => setCustomernfo(data));
@@ -42,7 +42,7 @@ const UpdateCustomerProfileModal = ({
 
 	const handleUpdateProductSubmit = (e) => {
 		// send to servers
-		const url = `http://localhost:5000/users/${customerEmail}`;
+		const url = `https://floating-ocean-21128.herokuapp.com/users/${customerEmail}`;
 		fetch(url, {
 			method: "PUT",
 			headers: {
@@ -86,6 +86,7 @@ const UpdateCustomerProfileModal = ({
 							sx={{ width: "100%", my: 1 }}
 							id="outlined-size-small"
 							label="Name"
+							type="text"
 							name="displayName"
 							value={customerInfo?.displayName || ""}
 							onChange={handleOnChange}
@@ -94,6 +95,7 @@ const UpdateCustomerProfileModal = ({
 						<TextField
 							sx={{ width: "100%", my: 1 }}
 							id="outlined-size-small"
+							type="email"
 							name="email"
 							label="Email"
 							value={customerInfo?.email || ""}
@@ -103,6 +105,7 @@ const UpdateCustomerProfileModal = ({
 						<TextField
 							sx={{ width: "100%", my: 1 }}
 							id="outlined-size-small"
+							type="number"
 							name="phoneNumber"
 							label="Phone"
 							value={customerInfo?.phoneNumber || ""}
@@ -112,6 +115,7 @@ const UpdateCustomerProfileModal = ({
 						<TextField
 							sx={{ width: "100%", my: 1 }}
 							id="outlined-size-small"
+							type="text"
 							name="address"
 							label="Address"
 							value={customerInfo?.address || ""}
@@ -121,6 +125,7 @@ const UpdateCustomerProfileModal = ({
 						<TextField
 							sx={{ width: "100%", my: 1 }}
 							id="outlined-size-small"
+							type="text"
 							name="city"
 							label="City"
 							value={customerInfo?.city || ""}
@@ -130,6 +135,7 @@ const UpdateCustomerProfileModal = ({
 						<TextField
 							sx={{ width: "100%", my: 1 }}
 							id="outlined-size-small"
+							type="text"
 							name="country"
 							label="County"
 							value={customerInfo?.country || ""}

@@ -23,7 +23,7 @@ const style = {
 	color: "white",
 	textDecoration: "none"
 };
-const drawerWidth = 240;
+const drawerWidth = 215;
 
 function CustomerDashboard(props) {
 	const { window } = props;

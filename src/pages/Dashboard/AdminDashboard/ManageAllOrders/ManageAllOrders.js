@@ -38,17 +38,17 @@ export default function ManageAllOrders() {
 	const [status, setStatus] = useState("");
 
 	useEffect(() => {
-		fetch("http://localhost:5000/orderRequest")
+		fetch("https://floating-ocean-21128.herokuapp.com/orderRequest")
 			.then((res) => res.json())
 			.then((data) => setOrders(data));
 	}, []);
-
+	console.log(orders);
 	function createData(
 		pName,
-		cuName,
+		customerName,
 		Date,
-		Phone,
-		Address,
+		customerPhone,
+		customerAddress,
 		productQuentity,
 		totalPrice,
 		Payment,
@@ -58,10 +58,10 @@ export default function ManageAllOrders() {
 	) {
 		return {
 			pName,
-			Uname: cuName,
+			customerName,
 			Date,
-			Phone,
-			Address,
+			customerPhone,
+			customerAddress,
 			productQuentity,
 			totalPrice,
 			Payment,
@@ -76,11 +76,11 @@ export default function ManageAllOrders() {
 				order.productName,
 				order.customerName,
 				order.date,
-				order.phone,
-				order.address,
+				order.customerPhone,
+				order.customerAddress,
 				order.productQuentity,
 				order.totalPrice,
-				order.payment.payment_status,
+				order.payment,
 				order.status,
 				order._id,
 				<Typography
@@ -109,7 +109,7 @@ export default function ManageAllOrders() {
 	// update order status pending to Shipped
 	const handleUpdateStatus = (id) => {
 		// e.preventDefault();
-		fetch(`http://localhost:5000/status/${id}`, {
+		fetch(`https://floating-ocean-21128.herokuapp.com/status/${id}`, {
 			method: "PUT",
 			headers: {
 				"content-type": "application/json"
@@ -127,7 +127,7 @@ export default function ManageAllOrders() {
 	// handle delete product
 	const handleDelete = (id) => {
 		if (confirm("Are you sure you want to delete now??")) {
-			const url = `http://localhost:5000/orderRequest/${id}`;
+			const url = `https://floating-ocean-21128.herokuapp.com/orderRequest/${id}`;
 			fetch(url, {
 				method: "DELETE"
 			})
@@ -153,7 +153,7 @@ export default function ManageAllOrders() {
 						<StyledTableCell align="right">User Name</StyledTableCell>
 						<StyledTableCell align="right">Date</StyledTableCell>
 						<StyledTableCell align="right">Phone</StyledTableCell>
-						<StyledTableCell align="right">Address</StyledTableCell>
+						<StyledTableCell align="right">customerAddress</StyledTableCell>
 						<StyledTableCell align="right">Quentity</StyledTableCell>
 						<StyledTableCell align="right">Amount/ Payment</StyledTableCell>
 						<StyledTableCell align="right">
@@ -168,10 +168,16 @@ export default function ManageAllOrders() {
 							<StyledTableCell component="th" scope="row">
 								{row.pName}
 							</StyledTableCell>
-							<StyledTableCell align="right">{row.Uname}</StyledTableCell>
+							<StyledTableCell align="right">
+								{row.customerName}
+							</StyledTableCell>
 							<StyledTableCell align="right">{row.Date}</StyledTableCell>
-							<StyledTableCell align="right">{row.Phone}</StyledTableCell>
-							<StyledTableCell align="right">{row.Address}</StyledTableCell>
+							<StyledTableCell align="right">
+								{row.customerPhone}
+							</StyledTableCell>
+							<StyledTableCell align="right">
+								{row.customerAddress}
+							</StyledTableCell>
 							<StyledTableCell align="right">
 								{row.productQuentity}
 							</StyledTableCell>

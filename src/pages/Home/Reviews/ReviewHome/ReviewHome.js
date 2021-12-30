@@ -16,13 +16,13 @@ export default function ReviewHome() {
 	const [users, setUsers] = React.useState([]);
 
 	React.useEffect(() => {
-		fetch("http://localhost:5000/reviews")
+		fetch("https://floating-ocean-21128.herokuapp.com/reviews")
 			.then((res) => res.json())
 			.then((data) => setReviews(data));
 	}, []);
 
 	React.useEffect(() => {
-		fetch("http://localhost:5000/users")
+		fetch("https://floating-ocean-21128.herokuapp.com/users")
 			.then((res) => res.json())
 			.then((data) => setUsers(data));
 	}, []);

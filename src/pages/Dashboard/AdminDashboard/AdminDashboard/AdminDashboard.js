@@ -24,7 +24,7 @@ const style = {
 	color: "white",
 	textDecoration: "none"
 };
-const drawerWidth = 240;
+const drawerWidth = 215;
 
 function AdminDashboard(props) {
 	const { window } = props;
@@ -40,7 +40,7 @@ function AdminDashboard(props) {
 	};
 
 	useEffect(() => {
-		fetch("http://localhost:5000/orderRequest")
+		fetch("https://floating-ocean-21128.herokuapp.com/orderRequest")
 			.then((res) => res.json())
 			.then((data) => setOrders(data));
 	}, []);

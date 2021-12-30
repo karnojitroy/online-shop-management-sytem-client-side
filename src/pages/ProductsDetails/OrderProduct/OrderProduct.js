@@ -2,7 +2,7 @@
 import swal from "sweetalert";
 import useEnhancedEffect from "@mui/utils/useEnhancedEffect";
 import Button from "@restart/ui/esm/Button";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Card, Col, Container, Navbar, Row, Spinner } from "react-bootstrap";
 import { NavLink, useParams } from "react-router-dom";
 import useAuth from "../../../hooks/useAuth";
@@ -27,30 +27,26 @@ const inputStyle = {
 const OrderProduct = () => {
 	const { productId } = useParams();
 	const [product, setProduct] = useState([]);
+	const [customerInfo, setCustomernfo] = useState({});
 	const [phoneQuentity, setPhoneQuenity] = useState(1);
 	const { user, isLoading } = useAuth();
+
 	useEnhancedEffect(() => {
 		if (isLoading) {
 			return <Spinner className="my-5" animation="border" variant="success" />;
 		}
-		fetch(`http://localhost:5000/products/${productId}`)
+		fetch(`https://floating-ocean-21128.herokuapp.com/products/${productId}`)
 			.then((res) => res.json())
 			.then((data) => setProduct(data));
 	}, [productId]);
-	const initialInfo = {
-		customerName: user.displayName,
-		email: user.email,
-		phone: "",
-		address: ""
-	};
-	const [orderInfo, setOrderingInfo] = useState(initialInfo);
-	const handleOnBlur = (e) => {
-		const field = e.target.name;
-		const value = e.target.value;
-		const updateOrderInfo = { ...orderInfo };
-		updateOrderInfo[field] = value;
-		setOrderingInfo(updateOrderInfo);
-	};
+
+	useEffect(() => {
+		const url = `https://floating-ocean-21128.herokuapp.com/users/userEmail/${user.email}`;
+		fetch(url)
+			.then((res) => res.json())
+			.then((data) => setCustomernfo(data));
+	}, [user.email]);
+
 	// handle phone item count
 	const handlePlus = () => {
 		setPhoneQuenity(phoneQuentity + 1);
@@ -71,42 +67,77 @@ const OrderProduct = () => {
 	const tax = (totalPrice * 7) / 100;
 	const totalOrderCost = totalPrice + totalShippingCost + tax;
 
+	const orderInfo = {
+		customerName: customerInfo?.displayName,
+		customerEmail: customerInfo?.email,
+		customerPhone: customerInfo?.phoneNumber,
+		customerAddress: customerInfo.address
+	};
+
 	// handle order submit
 	const handleOrderSubmit = (e) => {
-		if (confirm("Are you sure you want to Order now??")) {
-			e.preventDefault();
-			const orderRequestInfo = {
-				productName: product.name,
-				productQuentity: phoneQuentity,
-				price: product.price,
-				totalPrice: totalPrice.toFixed(2),
-				totalShipping: totalShippingCost.toFixed(2),
-				tax: tax.toFixed(2),
-				totalOrderCost: totalOrderCost.toFixed(2),
-				...orderInfo,
-				status: "Pending",
-				payment: "Pending",
-				date: new Date().toLocaleDateString()
-			};
+		e.preventDefault();
+		if (
+			customerInfo.phoneNumber === undefined ||
+			customerInfo.phoneNumber === " "
+		) {
+			alert(
+				"Please Add your phone number in your account and complete your profile"
+			);
+			return;
+		} else if (
+			customerInfo.address === undefined ||
+			customerInfo.address === " "
+		) {
+			alert(
+				"Please Add your shipping  addres in your account and complete your profile"
+			);
+			return;
+		} else if (
+			customerInfo.phoneNumber === undefined ||
+			customerInfo.phoneNumber === " " ||
+			customerInfo.address === undefined ||
+			customerInfo.address === " "
+		) {
+			alert(
+				"Please Add your phone number and shipping  addres in your account and complete your profile"
+			);
+			return;
+		} else {
+			if (confirm("Are you sure you want to Order now??")) {
+				const orderRequestInfo = {
+					productName: product.name,
+					productQuentity: phoneQuentity,
+					price: product.price,
+					totalPrice: totalPrice.toFixed(2),
+					totalShipping: totalShippingCost.toFixed(2),
+					tax: tax.toFixed(2),
+					totalOrderCost: totalOrderCost.toFixed(2),
+					...orderInfo,
+					status: "Pending",
+					payment: "Pending",
+					date: new Date().toLocaleDateString()
+				};
 
-			// send to servers
+				// send to servers
 
-			fetch("http://localhost:5000/orderRequest", {
-				method: "POST",
-				headers: {
-					"content-type": "application/json"
-				},
-				body: JSON.stringify(orderRequestInfo)
-			})
-				.then((res) => res.json())
-				.then((data) => {
-					if (data.insertedId)
-						swal(
-							"Order placed successfully",
-							"Go to the dashboard,Complete payment and confirm the order",
-							"success"
-						);
-				});
+				fetch("https://floating-ocean-21128.herokuapp.com/orderRequest", {
+					method: "POST",
+					headers: {
+						"content-type": "application/json"
+					},
+					body: JSON.stringify(orderRequestInfo)
+				})
+					.then((res) => res.json())
+					.then((data) => {
+						if (data.insertedId)
+							swal(
+								"Order placed successfully",
+								"Go to the dashboard,Complete payment and confirm the order",
+								"success"
+							);
+					});
+			}
 		}
 	};
 	return (
@@ -169,9 +200,7 @@ const OrderProduct = () => {
 										disabled
 										className="input-style"
 										id="outlined-size-p"
-										name="productName"
 										defaultValue={product?.name}
-										onBlur={handleOnBlur}
 									/>{" "}
 									<br />
 									<p>Quentity: </p>
@@ -179,9 +208,7 @@ const OrderProduct = () => {
 										disabled
 										className="input-style"
 										id="outlined-size-p"
-										name="productQuentity"
 										value={phoneQuentity}
-										onBlur={handleOnBlur}
 									/>{" "}
 									<br />
 									<p>Price in doller: </p>
@@ -189,9 +216,7 @@ const OrderProduct = () => {
 										disabled
 										className="input-style-color-cyan"
 										id="outlined-size-p"
-										name="price"
 										value={totalPrice.toFixed(2)}
-										onBlur={handleOnBlur}
 									/>{" "}
 									<br />
 									<p>Tax 7%: </p>
@@ -199,9 +224,7 @@ const OrderProduct = () => {
 										disabled
 										className="input-style-color-cyan"
 										id="outlined-size-p"
-										name="price"
 										value={tax.toFixed(2)}
-										onBlur={handleOnBlur}
 									/>{" "}
 									<br />
 									<p>Shipping Cost item/ 5$: </p>
@@ -209,9 +232,7 @@ const OrderProduct = () => {
 										disabled
 										className="input-style-color-cyan"
 										id="outlined-size-p"
-										name="price"
 										value={totalShippingCost.toFixed(2)}
-										onBlur={handleOnBlur}
 									/>{" "}
 									<br />
 									<p>Total Cost: </p>
@@ -219,9 +240,7 @@ const OrderProduct = () => {
 										disabled
 										className="input-style-color-cyan"
 										id="outlined-size-p"
-										name="price"
 										value={totalOrderCost.toFixed(2)}
-										onBlur={handleOnBlur}
 									/>{" "}
 									<br />
 									<p>Customer name: </p>
@@ -230,9 +249,7 @@ const OrderProduct = () => {
 										disabled
 										className="input-style"
 										id="outlined-size-p"
-										name="customerName"
-										defaultValue={user.displayName}
-										onBlur={handleOnBlur}
+										defaultValue={customerInfo?.displayName}
 									/>{" "}
 									<br />
 									<p>Email: </p>
@@ -241,29 +258,24 @@ const OrderProduct = () => {
 										disabled
 										className="input-style"
 										id="outlined-size-p"
-										name="email"
-										defaultValue={user.email}
-										onBlur={handleOnBlur}
+										defaultValue={customerInfo?.email}
 									/>
 									<br />
+									<p>Phone: </p>
 									<input
-										required
-										style={inputStyle}
+										disabled
+										className="input-style"
 										id="outlined-size-p"
-										name="phone"
-										type="number"
-										placeholder="Your Phone Number*"
-										onChange={handleOnBlur}
+										defaultValue={customerInfo?.phoneNumber}
 									/>
 									<br />
+									<p>Shipping Address: </p>
 									<textarea
-										required
-										style={inputStyle}
+										disabled
+										className="input-style"
 										id="outlined-size-p"
-										name="address"
-										placeholder="Shipping Address*"
-										onChange={handleOnBlur}
-										rows="7"
+										defaultValue={customerInfo?.address}
+										rows="auto"
 									/>
 									<br />
 									<Button
