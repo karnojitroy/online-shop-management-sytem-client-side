@@ -45,11 +45,6 @@ const CustomerProfile = () => {
 									<td>Email</td>
 									<td>{matchCurrentUser[0]?.email}</td>
 								</tr>
-
-								<tr>
-									<td>Email</td>
-									<td>{matchCurrentUser[0]?.email}</td>
-								</tr>
 								<tr>
 									<td>Phone</td>
 									<td>{matchCurrentUser[0]?.phoneNumber}</td>

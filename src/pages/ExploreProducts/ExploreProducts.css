@@ -11,12 +11,12 @@
 }
 #searchArea {
 	background-color: black;
-	height: 80px;
+	height: 60px;
 }
 .searchInput {
 	justify-content: center;
 	text-align: left;
-	width: 340px;
-	margin-top: 20px;
+	width: 400px;
+	margin-top: 10px;
 	height: 40px;
 }

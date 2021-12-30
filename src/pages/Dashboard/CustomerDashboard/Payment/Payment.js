@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { loadStripe } from "@stripe/stripe-js";
 import CheckoutForm from "./CheckoutForm";
@@ -26,9 +26,9 @@ const darkTheme = createTheme({ palette: { mode: "dark" } });
 // This is payment component
 const Payment = () => {
 	const { orderId } = useParams();
-	const [myOrder, setMyOrder] = React.useState([]);
+	const [myOrder, setMyOrder] = useState([]);
 
-	React.useEffect(() => {
+	useEffect(() => {
 		fetch(
 			`https://floating-ocean-21128.herokuapp.com/orderRequest/orderId/${orderId}`
 		)

@@ -7,7 +7,7 @@ import { Spinner } from "react-bootstrap";
 import cardImage from "../../../../images/credit-card.png";
 
 const CheckoutForm = (myOrder) => {
-	const { _id, totalOrderCost, customerName } = myOrder.myOrder;
+	const { _id, totalOrderCost, customerName, payment } = myOrder.myOrder;
 
 	const stripe = useStripe();
 	const elements = useElements();
@@ -58,7 +58,7 @@ const CheckoutForm = (myOrder) => {
 			setSuccess("");
 		} else {
 			setError("");
-			console.log(paymentMethod);
+			// console.log(paymentMethod);
 		}
 
 		// payment intent
@@ -99,7 +99,7 @@ const CheckoutForm = (myOrder) => {
 			})
 				.then((res) => res.json())
 				.then((data) => {
-					console.log(data);
+					// console.log(data);
 				});
 		}
 	};
@@ -129,38 +129,69 @@ const CheckoutForm = (myOrder) => {
 						<Spinner className="my-2" animation="grow" variant="info" />
 					) : (
 						<div className="py-3">
-							<button
-								type="submit"
-								style={{ width: "300px" }}
-								className="btn btn-pay mt-5"
-								disabled={!stripe || success}
-							>
-								Pay ${totalOrderCost}
-							</button>{" "}
-							<div>
-								<img
-									src={cardImage}
-									alt=""
-									style={{ width: "300px", marginTop: "20px" }}
-								/>
+							{payment?.payment_status === "paid" ? (
+								<button
+									disabled
+									style={{ width: "300px" }}
+									className="btn btn-pay mt-5 mb-2"
+								>
+									Pay ${totalOrderCost}
+								</button>
+							) : (
+								<button
+									type="submit"
+									style={{ width: "300px" }}
+									className="btn btn-pay mt-5 mb-2"
+									disabled={!stripe || success}
+								>
+									Pay ${totalOrderCost}
+								</button>
+							)}
+
+							<div className="text-center">
+								{error && (
+									<div className="py-3">
+										<p
+											style={{
+												color: "red",
+												lineHeight: "3px",
+												textAlign: "center"
+											}}
+										>
+											{error}{" "}
+										</p>{" "}
+										<p style={{ color: "red", textAlign: "center" }}>
+											Please reload the page & try again
+										</p>
+										<button
+											onClick={() => window.location.reload(false)}
+											className="btn btn-primary"
+										>
+											Reload
+										</button>
+									</div>
+								)}
+								{success && (
+									<p style={{ color: "green", textAlign: "center" }}>
+										{success}
+									</p>
+								)}
 							</div>
 						</div>
 					)}
+					<div>
+						<img
+							src={cardImage}
+							alt=""
+							style={{
+								width: "300px",
+								marginTop: "5px",
+								marginBottom: "10px"
+							}}
+						/>
+					</div>
 				</form>
 			)}
-			{error && (
-				<div className="py-3">
-					<p style={{ color: "red", lineHeight: "3px" }}>{error} </p>{" "}
-					<p style={{ color: "red" }}>Please reload the page & try again</p>
-					<button
-						onClick={() => window.location.reload(false)}
-						className="btn btn-primary"
-					>
-						Reload
-					</button>
-				</div>
-			)}
-			{success && <p style={{ color: "green" }}>{success}</p>}
 		</div>
 	);
 };

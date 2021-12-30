@@ -42,7 +42,6 @@ export default function ManageAllOrders() {
 			.then((res) => res.json())
 			.then((data) => setOrders(data));
 	}, []);
-	console.log(orders);
 	function createData(
 		pName,
 		customerName,
@@ -73,18 +72,18 @@ export default function ManageAllOrders() {
 	const rows = [
 		orders.map((order) =>
 			createData(
-				order.productName,
-				order.customerName,
-				order.date,
-				order.customerPhone,
-				order.customerAddress,
-				order.productQuentity,
-				order.totalPrice,
-				order.payment,
-				order.status,
-				order._id,
+				order?.productName,
+				order?.customerName,
+				order?.date,
+				order?.customerPhone,
+				order?.customerAddress,
+				order?.productQuentity,
+				order?.totalPrice,
+				order?.payment?.payment_status,
+				order?.status,
+				order?._id,
 				<Typography
-					onClick={() => handleDelete(order._id)}
+					onClick={() => handleDelete(order?._id)}
 					variant="caption"
 					sx={{
 						color: "white",
@@ -99,7 +98,7 @@ export default function ManageAllOrders() {
 			)
 		)
 	];
-	// orders.map((order) => console.log("s", order.status));
+	// orders.map((order) => console.log("s", order?.status));
 
 	const handleStatusChange = (e) => {
 		setStatus(e.target.value);
@@ -108,20 +107,21 @@ export default function ManageAllOrders() {
 
 	// update order status pending to Shipped
 	const handleUpdateStatus = (id) => {
-		// e.preventDefault();
-		fetch(`https://floating-ocean-21128.herokuapp.com/status/${id}`, {
-			method: "PUT",
-			headers: {
-				"content-type": "application/json"
-			},
-			body: JSON.stringify({ status: status })
-		})
-			.then((res) => res.json())
-			.then((data) => {
-				if (data.modifiedCount) {
-					setStatus(status);
-				}
-			});
+		if (confirm("Are you sure?")) {
+			fetch(`https://floating-ocean-21128.herokuapp.com/status/${id}`, {
+				method: "PUT",
+				headers: {
+					"content-type": "application/json"
+				},
+				body: JSON.stringify({ status: status })
+			})
+				.then((res) => res.json())
+				.then((data) => {
+					if (data.modifiedCount) {
+						setStatus(status);
+					}
+				});
+		}
 	};
 
 	// handle delete product
@@ -133,7 +133,7 @@ export default function ManageAllOrders() {
 			})
 				.then((res) => res.json())
 				.then((data) => {
-					const remainingOrder = orders.filter((order) => order._id !== id);
+					const remainingOrder = orders.filter((order) => order?._id !== id);
 					setOrders(remainingOrder);
 					swal(" Order", "Deleted successful!", "success");
 				});

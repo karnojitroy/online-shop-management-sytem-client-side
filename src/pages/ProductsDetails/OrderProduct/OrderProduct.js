@@ -115,7 +115,7 @@ const OrderProduct = () => {
 					totalOrderCost: totalOrderCost.toFixed(2),
 					...orderInfo,
 					status: "Pending",
-					payment: "Pending",
+					payment: { payment_status: "Pending" },
 					date: new Date().toLocaleDateString()
 				};
 

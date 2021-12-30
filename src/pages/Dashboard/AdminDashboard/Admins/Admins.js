@@ -22,7 +22,6 @@ const Admins = () => {
 				setAdmins(admin);
 			});
 	}, []);
-	console.log(admins);
 
 	const deleteAdmin = (id) => {
 		if (confirm("Are you sure you want to Delete now?")) {

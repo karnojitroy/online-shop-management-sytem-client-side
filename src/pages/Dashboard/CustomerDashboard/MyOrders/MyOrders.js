@@ -39,13 +39,15 @@ export default function MyOrders() {
 	const [orders, setOrders] = useState([]);
 
 	useEffect(() => {
-		fetch(
-			`https://floating-ocean-21128.herokuapp.com/orderRequest/${user.email}`
-		)
+		fetch(`https://floating-ocean-21128.herokuapp.com/orderRequest`)
 			.then((res) => res.json())
-			.then((data) => setOrders(data));
+			.then((data) => {
+				const myOrders = data.filter(
+					(myOrder) => myOrder.customerEmail === user.email
+				);
+				setOrders(myOrders);
+			});
 	}, [user.email]);
-	// console.log(status);
 
 	function createData(
 		pName,
@@ -77,15 +79,15 @@ export default function MyOrders() {
 	const rows = [
 		orders.map((order) =>
 			createData(
-				order.productName,
-				order.customerName,
-				order.email,
-				order.phone,
-				order.address,
-				order.productQuentity,
-				order.totalOrderCost,
-				order.payment,
-				order._id,
+				order?.productName,
+				order?.customerName,
+				order?.customerEmail,
+				order?.customerPhone,
+				order?.customerAddress,
+				order?.productQuentity,
+				order?.totalOrderCost,
+				order?.payment?.payment_status,
+				order?._id,
 				<Typography
 					variant="caption"
 					sx={{ color: "primary.main", cursor: "pointer" }}
