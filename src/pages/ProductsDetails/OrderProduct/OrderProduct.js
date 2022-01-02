@@ -261,7 +261,13 @@ const OrderProduct = () => {
 										defaultValue={customerInfo?.email}
 									/>
 									<br />
-									<p>Phone: </p>
+									<p>
+										Phone: [
+										<span className="text-danger">
+											You can change it from your profile
+										</span>
+										]
+									</p>
 									<input
 										disabled
 										className="input-style"
@@ -269,7 +275,13 @@ const OrderProduct = () => {
 										defaultValue={customerInfo?.phoneNumber}
 									/>
 									<br />
-									<p>Shipping Address: </p>
+									<p>
+										Shipping Address: [
+										<span className="text-danger">
+											You can change it from your profile
+										</span>
+										]{" "}
+									</p>
 									<textarea
 										disabled
 										className="input-style"
