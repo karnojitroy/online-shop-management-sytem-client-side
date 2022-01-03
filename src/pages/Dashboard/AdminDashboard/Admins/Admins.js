@@ -8,8 +8,9 @@ import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 import Typography from "@mui/material/Typography";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { IconButton } from "@mui/material";
+import { Grid, IconButton } from "@mui/material";
 import swal from "sweetalert";
+import { Box } from "@mui/system";
 
 const Admins = () => {
 	const [admins, setAdmins] = useState([]);
@@ -47,48 +48,57 @@ const Admins = () => {
 					sx={{ width: "100%", maxWidth: 400, bgcolor: "background.paper" }}
 					key={index}
 				>
-					<ListItem
-						onClick={() => deleteAdmin(admin._id)}
-						alignItems="flex-start"
-						secondaryAction={
-							<IconButton edge="end" aria-label="delete">
-								<DeleteIcon />
-							</IconButton>
-						}
-					>
-						<ListItemAvatar>
-							{admin.photoURL ? (
-								<Avatar alt="Remy Sharp" src={admin?.photoURL} />
-							) : (
-								<Avatar src="/broken-image.jpg" />
-							)}
-						</ListItemAvatar>
+					<Box sx={{ flexGrow: 1 }}>
+						<Grid container spacing={2}>
+							<Grid item xs={11}>
+								<ListItem>
+									<ListItemAvatar>
+										{admin.photoURL ? (
+											<Avatar alt="Remy Sharp" src={admin?.photoURL} />
+										) : (
+											<Avatar src="/broken-image.jpg" />
+										)}
+									</ListItemAvatar>
 
-						<ListItemText
-							primary={admin.displayName}
-							secondary={
-								<React.Fragment>
-									<Typography
-										sx={{ display: "inline" }}
-										component="span"
-										variant="body2"
-										color="text.primary"
-									>
-										Role : {admin?.role}
-									</Typography>
-									<br />
-									<Typography
-										sx={{ display: "inline" }}
-										component="span"
-										variant="body2"
-										color="text.primary"
-									>
-										Email: {admin?.email}
-									</Typography>
-								</React.Fragment>
-							}
-						/>
-					</ListItem>
+									<ListItemText
+										primary={admin.displayName}
+										secondary={
+											<React.Fragment>
+												<Typography
+													sx={{ display: "inline" }}
+													component="span"
+													variant="body2"
+													color="text.primary"
+												>
+													Role : {admin?.role}
+												</Typography>
+												<br />
+												<Typography
+													sx={{ display: "inline" }}
+													component="span"
+													variant="body2"
+													color="text.primary"
+												>
+													Email: {admin?.email}
+												</Typography>
+											</React.Fragment>
+										}
+									/>
+								</ListItem>
+							</Grid>
+							<Grid item xs={1}>
+								<ListItem
+									onClick={() => deleteAdmin(admin._id)}
+									// alignItems="flex-start"
+									secondaryAction={
+										<IconButton edge="end" aria-label="delete">
+											<DeleteIcon />
+										</IconButton>
+									}
+								></ListItem>
+							</Grid>
+						</Grid>
+					</Box>
 
 					<Divider variant="inset" component="li" />
 				</List>
