@@ -50,7 +50,7 @@ const Admins = () => {
 				>
 					<Box sx={{ flexGrow: 1 }}>
 						<Grid container spacing={2}>
-							<Grid item xs={11}>
+							<Grid item xs={10}>
 								<ListItem>
 									<ListItemAvatar>
 										{admin.photoURL ? (
@@ -86,7 +86,7 @@ const Admins = () => {
 									/>
 								</ListItem>
 							</Grid>
-							<Grid item xs={1}>
+							<Grid item xs={2}>
 								<ListItem
 									onClick={() => deleteAdmin(admin._id)}
 									// alignItems="flex-start"
