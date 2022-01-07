@@ -35,13 +35,13 @@ const OrderProduct = () => {
 		if (isLoading) {
 			return <Spinner className="my-5" animation="border" variant="success" />;
 		}
-		fetch(`https://floating-ocean-21128.herokuapp.com/products/${productId}`)
+		fetch(`http://localhost:5000/products/${productId}`)
 			.then((res) => res.json())
 			.then((data) => setProduct(data));
 	}, [productId]);
 
 	useEffect(() => {
-		const url = `https://floating-ocean-21128.herokuapp.com/users/userEmail/${user.email}`;
+		const url = `http://localhost:5000/users/userEmail/${user.email}`;
 		fetch(url)
 			.then((res) => res.json())
 			.then((data) => setCustomernfo(data));
@@ -110,7 +110,7 @@ const OrderProduct = () => {
 					productQuentity: phoneQuentity,
 					price: product.price,
 					totalPrice: totalPrice.toFixed(2),
-					totalShipping: totalShippingCost.toFixed(2),
+					totalShippingCost: totalShippingCost.toFixed(2),
 					tax: tax.toFixed(2),
 					totalOrderCost: totalOrderCost.toFixed(2),
 					...orderInfo,
@@ -121,7 +121,7 @@ const OrderProduct = () => {
 
 				// send to servers
 
-				fetch("https://floating-ocean-21128.herokuapp.com/orderRequest", {
+				fetch("http://localhost:5000/orderRequest", {
 					method: "POST",
 					headers: {
 						"content-type": "application/json"

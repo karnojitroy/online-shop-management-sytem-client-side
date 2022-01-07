@@ -40,7 +40,7 @@ function AdminDashboard(props) {
 	};
 
 	useEffect(() => {
-		fetch("https://floating-ocean-21128.herokuapp.com/orderRequest")
+		fetch("http://localhost:5000/orderRequest")
 			.then((res) => res.json())
 			.then((data) => setOrders(data));
 	}, []);

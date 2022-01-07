@@ -26,7 +26,7 @@ const UpdateCustomerProfileModal = ({
 }) => {
 	const [customerInfo, setCustomernfo] = useState({});
 	useEffect(() => {
-		const url = `https://floating-ocean-21128.herokuapp.com/users/userEmail/${customerEmail}`;
+		const url = `http://localhost:5000/users/userEmail/${customerEmail}`;
 		fetch(url)
 			.then((res) => res.json())
 			.then((data) => setCustomernfo(data));
@@ -42,7 +42,7 @@ const UpdateCustomerProfileModal = ({
 
 	const handleUpdateProductSubmit = (e) => {
 		// send to servers
-		const url = `https://floating-ocean-21128.herokuapp.com/users/${customerEmail}`;
+		const url = `http://localhost:5000/users/${customerEmail}`;
 		fetch(url, {
 			method: "PUT",
 			headers: {

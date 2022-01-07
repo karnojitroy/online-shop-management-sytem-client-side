@@ -47,7 +47,7 @@ const Register = () => {
 	};
 
 	return (
-		<div>
+		<div className="pb-5">
 			<Navigation></Navigation>
 			<div className="container">
 				<p className="mt-5">

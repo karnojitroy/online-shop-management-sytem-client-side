@@ -15,7 +15,7 @@ const CustomerProfile = () => {
 	const { user } = useAuth();
 
 	useEffect(() => {
-		fetch(`https://floating-ocean-21128.herokuapp.com/users`)
+		fetch(`http://localhost:5000/users`)
 			.then((res) => res.json())
 			.then((data) => setCustomerInfo(data));
 	}, []);

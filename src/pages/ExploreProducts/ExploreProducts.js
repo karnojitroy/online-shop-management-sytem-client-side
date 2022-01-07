@@ -15,7 +15,7 @@ const ExploreProducts = () => {
 	const [searchTexts, setSeachTexts] = useState("");
 
 	useEffect(() => {
-		fetch("https://floating-ocean-21128.herokuapp.com/products")
+		fetch("http://localhost:5000/products")
 			.then((res) => res.json())
 			.then((data) => {
 				setProducts(data);

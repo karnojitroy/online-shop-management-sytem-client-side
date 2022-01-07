@@ -113,7 +113,7 @@ const Login = () => {
 						className="btn btn-primary mx-auto"
 						onClick={handleSignInWithGoogle}
 					>
-						Sign in With Google
+						Log in With Google
 					</button>
 				</div>
 				{/* success and error alert */}

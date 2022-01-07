@@ -16,7 +16,7 @@ const Admins = () => {
 	const [admins, setAdmins] = useState([]);
 
 	useEffect(() => {
-		fetch("https://floating-ocean-21128.herokuapp.com/users")
+		fetch("http://localhost:5000/users")
 			.then((res) => res.json())
 			.then((data) => {
 				const admin = data.filter((user) => user.role === "admin");
@@ -26,7 +26,7 @@ const Admins = () => {
 
 	const deleteAdmin = (id) => {
 		if (confirm("Are you sure you want to Delete now?")) {
-			const url = `https://floating-ocean-21128.herokuapp.com/users/${id}`;
+			const url = `http://localhost:5000/users/${id}`;
 			fetch(url, {
 				method: "DELETE"
 			})

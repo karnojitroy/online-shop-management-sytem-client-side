@@ -12,14 +12,14 @@ const ManageProducts = () => {
 	const [manageProducts, setManageProducts] = useState([]);
 
 	useEffect(() => {
-		fetch("https://floating-ocean-21128.herokuapp.com/products")
+		fetch("http://localhost:5000/products")
 			.then((res) => res.json())
 			.then((data) => setManageProducts(data));
 	}, []);
 
 	const handleDeleteProduct = (id) => {
 		if (confirm("Are you sure you want to delete the item now??")) {
-			const url = `https://floating-ocean-21128.herokuapp.com/products/${id}`;
+			const url = `http://localhost:5000/products/${id}`;
 			fetch(url, {
 				method: "DELETE"
 			})

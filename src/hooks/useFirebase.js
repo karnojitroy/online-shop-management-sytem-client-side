@@ -114,7 +114,7 @@ const useFirebase = () => {
 
 	//check and set admin
 	useEffect(() => {
-		fetch(`https://floating-ocean-21128.herokuapp.com/users/${user.email}`)
+		fetch(`http://localhost:5000/users/${user.email}`)
 			.then((res) => res.json())
 			.then((data) => setAdmin(data.admin));
 	}, [user.email]);
@@ -140,7 +140,7 @@ const useFirebase = () => {
 			country
 		};
 		if (method === "POST" || method === "PUT" || method === "DELETE") {
-			fetch("https://floating-ocean-21128.herokuapp.com/users", {
+			fetch("http://localhost:5000/users", {
 				method: method,
 				headers: {
 					"content-type": "application/json"
@@ -148,7 +148,7 @@ const useFirebase = () => {
 				body: JSON.stringify(user)
 			}).then();
 		} else {
-			fetch("https://floating-ocean-21128.herokuapp.com/users", {
+			fetch("http://localhost:5000/users", {
 				method: method,
 				headers: {
 					"content-type": "application/json"
