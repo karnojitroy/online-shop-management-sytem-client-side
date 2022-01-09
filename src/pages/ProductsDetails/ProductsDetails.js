@@ -91,7 +91,7 @@ const ProductsDetails = () => {
 											className="mb-1"
 										>
 											<Button className="btn btn-purchase my-3 w-75">
-												{<FontAwesomeIcon icon={faShoppingCart} />} Go Order
+												{<FontAwesomeIcon icon={faShoppingCart} />} Order Now
 											</Button>
 										</NavLink>
 									)}
